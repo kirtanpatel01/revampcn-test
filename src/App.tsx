@@ -1,20 +1,111 @@
+import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from "react-router-dom"
+import DashboardPage from "@/app/dashboard/page"
+import LoginPage from "@/app/login/page"
+import SignupPage from "@/app/signup/page"
 import { Button } from "@/components/ui/button"
+
+import { ArrowRight, LayoutDashboard, Shield, Zap } from "lucide-react"
+
+function Home() {
+  const navigate = useNavigate()
+
+  return (
+    <div className="flex min-h-screen flex-col bg-background text-foreground selection:bg-primary/30">
+      {/* Navigation */}
+      <header className="sticky top-0 z-50 flex h-16 items-center justify-between border-b bg-background/80 px-6 backdrop-blur-md">
+        <div className="flex items-center gap-2 font-bold">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+            <Zap className="h-5 w-5" />
+          </div>
+          <span>RevampCN</span>
+        </div>
+        <nav className="flex items-center gap-4">
+          <Button variant="ghost" onClick={() => navigate('/login')}>
+            Sign In
+          </Button>
+          <Button onClick={() => navigate('/signup')}>
+            Get Started
+          </Button>
+        </nav>
+      </header>
+
+      <main className="flex-1">
+        {/* Hero Section */}
+        <section className="relative overflow-hidden px-6 py-24 md:py-32 lg:py-40">
+          <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/20 via-background to-background"></div>
+          <div className="mx-auto flex max-w-[64rem] flex-col items-center gap-8 text-center">
+            <div className="inline-flex items-center rounded-full border bg-muted/50 px-3 py-1 text-sm font-medium backdrop-blur-sm">
+              <span className="flex h-2 w-2 rounded-full bg-primary mr-2"></span>
+              Welcome to the new standard
+            </div>
+            <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
+              Build faster with <br className="hidden sm:block" />
+              <span className="bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
+                beautiful components
+              </span>
+            </h1>
+            <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
+              A highly customizable, feature-rich dashboard and authentication system ready to be integrated into your next big project.
+            </p>
+            <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:gap-6">
+              <Button size="lg" onClick={() => navigate('/signup')}>
+                Start Building <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+              <Button size="lg" variant="outline" onClick={() => navigate('/dashboard')}>
+                <LayoutDashboard className="mr-2 h-4 w-4" /> View Dashboard
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Features Section */}
+        <section className="container mx-auto px-6 py-16 md:py-24">
+          <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-3">
+            <div className="flex flex-col gap-3 rounded-2xl border bg-card p-6 shadow-sm transition-all hover:shadow-md">
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                <Zap className="h-6 w-6" />
+              </div>
+              <h3 className="text-xl font-semibold">Lightning Fast</h3>
+              <p className="text-muted-foreground">Built on Vite and React for incredible performance and seamless developer experience.</p>
+            </div>
+            <div className="flex flex-col gap-3 rounded-2xl border bg-card p-6 shadow-sm transition-all hover:shadow-md">
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                <Shield className="h-6 w-6" />
+              </div>
+              <h3 className="text-xl font-semibold">Secure by Default</h3>
+              <p className="text-muted-foreground">Robust authentication flows and protected routes ready for your custom backend.</p>
+            </div>
+            <div className="flex flex-col gap-3 rounded-2xl border bg-card p-6 shadow-sm transition-all hover:shadow-md">
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                <LayoutDashboard className="h-6 w-6" />
+              </div>
+              <h3 className="text-xl font-semibold">Stunning UI</h3>
+              <p className="text-muted-foreground">Crafted with Tailwind CSS and Shadcn for an instantly beautiful, accessible interface.</p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      {/* Footer */}
+      <footer className="border-t py-8 text-center text-sm text-muted-foreground">
+        <div className="container mx-auto px-6">
+          <p>© {new Date().getFullYear()} RevampCN. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+  )
+}
 
 export function App() {
   return (
-    <div className="flex min-h-svh p-6">
-      <div className="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
-        <div>
-          <h1 className="font-medium">Project ready!</h1>
-          <p>You may now add components and start building.</p>
-          <p>We&apos;ve already added the button component for you.</p>
-          <Button className="mt-2">Button</Button>
-        </div>
-        <div className="font-mono text-xs text-muted-foreground">
-          (Press <kbd>d</kbd> to toggle dark mode)
-        </div>
-      </div>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+      </Routes>
+    </Router>
   )
 }
 
