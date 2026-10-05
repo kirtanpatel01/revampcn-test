@@ -1,5 +1,5 @@
 import { cn } from "cn"
-import { useNavigate, Link } from "react-router-dom"
+import { useNavigate, Link } from "react-router"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -26,6 +26,11 @@ export function LoginForm({
 
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
+      <div>
+        <Button variant="ghost" onClick={() => navigate(-1)}>
+          Back
+        </Button>
+      </div>
       <Card className="overflow-hidden p-0">
         <CardContent className="grid p-0 md:grid-cols-2">
           <form className="p-6 md:p-8" onSubmit={handleSubmit}>
@@ -99,8 +104,8 @@ export function LoginForm({
           </form>
           <div className="relative hidden bg-muted md:block">
             <img
-              src="/placeholder.svg"
-              alt="Image"
+              src="/login-bg.png"
+              alt="Beautiful night landscape"
               className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
             />
           </div>

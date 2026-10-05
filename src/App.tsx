@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from "react-router"
 import DashboardPage from "@/app/dashboard/page"
 import LoginPage from "@/app/login/page"
 import SignupPage from "@/app/signup/page"
