@@ -17,11 +17,11 @@ export function LoginForm({
   ...props
 }: React.ComponentProps<"div">) {
   const navigate = useNavigate()
-  
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     // Simple mock login for testing purposes
-    navigate('/dashboard')
+    navigate("/dashboard")
   }
 
   return (
