@@ -3,6 +3,7 @@ import { NavDocuments } from "@/components/nav-documents"
 import { NavMain } from "@/components/nav-main"
 import { NavSecondary } from "@/components/nav-secondary"
 import { NavUser } from "@/components/nav-user"
+import { ModeToggle } from "@/components/mode-toggle"
 import {
   Sidebar,
   SidebarContent,
@@ -150,14 +151,15 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     <Sidebar collapsible="offcanvas" {...props}>
       <SidebarHeader>
         <SidebarMenu>
-          <SidebarMenuItem>
+          <SidebarMenuItem className="flex items-center justify-between">
             <SidebarMenuButton
-              className="data-[slot=sidebar-menu-button]:p-1.5!"
+              className="w-fit data-[slot=sidebar-menu-button]:p-1.5!"
               onClick={() => (window.location.href = "/")}
             >
               <CommandIcon className="size-5!" />
               <span className="text-base font-semibold">Acme Inc.</span>
             </SidebarMenuButton>
+            <ModeToggle />
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>

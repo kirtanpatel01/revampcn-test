@@ -8,6 +8,8 @@ import DashboardPage from "@/app/dashboard/page"
 import LoginPage from "@/app/login/page"
 import SignupPage from "@/app/signup/page"
 import { Button } from "@/components/ui/button"
+import { ThemeProvider } from "@/components/theme-provider"
+import { ModeToggle } from "@/components/mode-toggle"
 
 import { Zap } from "lucide-react"
 
@@ -29,6 +31,7 @@ function Home() {
             Sign In
           </Button>
           <Button onClick={() => navigate("/signup")}>Get Started</Button>
+          <ModeToggle />
         </nav>
       </header>
 
@@ -37,13 +40,13 @@ function Home() {
         <section className="">
           <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-primary/20 via-background to-background"></div>
           <div className="mx-auto flex max-w-5xl flex-col items-center gap-8 text-center">
-            <div className="inline-flex items-center rounded-full bg-linear-to-br from-muted to-blue-950 px-3 py-1 text-sm font-medium backdrop-blur-sm">
-              <span className="mr-2 flex h-2 w-2 animate-pulse rounded-full bg-blue-400"></span>
+            <div className="inline-flex items-center rounded-full bg-linear-to-br from-muted to-rose-200 dark:to-rose-950 px-3 py-1 text-sm font-medium backdrop-blur-sm">
+              <span className="mr-2 flex h-2 w-2 animate-pulse rounded-full bg-rose-400"></span>
               Welcome to the new standard
             </div>
             <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
               Build faster with <br className="hidden sm:block" />
-              <span className="animate-pulse bg-linear-to-r from-primary to-blue-600 bg-clip-text text-transparent">
+              <span className="animate-pulse bg-linear-to-r from-primary to-rose-600 bg-clip-text text-transparent">
                 beautiful components
               </span>
             </h1>
@@ -106,14 +109,16 @@ function Home() {
 
 export function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/dashboard" element={<DashboardPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage />} />
-      </Routes>
-    </Router>
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+        </Routes>
+      </Router>
+    </ThemeProvider>
   )
 }
 
