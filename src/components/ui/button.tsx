@@ -17,6 +17,8 @@ const buttonVariants = cva(
         destructive:
           "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
         link: "text-primary underline-offset-4 hover:underline",
+        primary:
+          "relative overflow-hidden border-indigo-700 bg-linear-to-br from-blue-500 to-blue-600 text-zinc-100 shadow-[inset_4px_4px_12px_2px_var(--color-indigo-600),inset_4px_-4px_12px_2px_var(--color-indigo-600)] duration-250 text-shadow-sm hover:text-blue-100 after:pointer-events-none after:absolute after:inset-0 after:z-0 after:opacity-30 after:mix-blend-plus-darker after:content-[''] after:bg-noise [&>*:not(.pointer-events-none)]:relative [&>*:not(.pointer-events-none)]:z-10",
       },
       size: {
         default:
